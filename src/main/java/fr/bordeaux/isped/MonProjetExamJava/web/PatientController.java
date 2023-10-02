@@ -16,12 +16,6 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @GetMapping("api/patient")
-    public String test() {
-
-        return "hello";
-    }
-
     @GetMapping("api/id")
     public Optional<PatientDomain> getPatientById(Integer id) {
 
