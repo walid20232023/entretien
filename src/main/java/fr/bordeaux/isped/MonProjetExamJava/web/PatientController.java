@@ -1,5 +1,6 @@
 package fr.bordeaux.isped.MonProjetExamJava.web;
 
+import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +23,16 @@ public class PatientController {
         return patientService.getPatientById(id);
     }
 
-    @PostMapping("api/client")
-    public void addPatient(PatientDomain patientDomain) {
-
-        patientService.addPatient(patientDomain);
-
+    @PostMapping("api/patient")
+    public void addPatient(@RequestBody PatientDTO patientDto) {
+        patientService.addPatient(patientDto);
 
     }
 
     @DeleteMapping("api/delete")
-    public void deletePatient(Integer patientId) {
+    public void deletePatient(Integer id) {
 
-        patientService.deletePatient(patientId);
+        patientService.deletePatient(id);
 
     }
 

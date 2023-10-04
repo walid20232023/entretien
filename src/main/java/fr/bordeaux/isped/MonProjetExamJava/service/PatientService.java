@@ -1,5 +1,6 @@
 package fr.bordeaux.isped.MonProjetExamJava.service;
 
+import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,14 @@ public class PatientService {
 
     }
 
-    public void addPatient(PatientDomain patientDomain) {
-        patientRepository.save( patientDomain) ;
+    public void addPatient(PatientDTO patientDto) {
+        patientRepository.save( patientDto.convertDTOtoPatient(patientDto)) ;
     }
 
 
-    public void deletePatient(Integer patientId) {
+    public void deletePatient(Integer id) {
 
-        patientRepository.deleteById(patientId);
+        patientRepository.deleteById(id);
     }
 }
+
