@@ -22,8 +22,8 @@ public class PatientDomain {
     @Column(name = "lastname")
     private String lastname;
 
-    @Column(name = "gender")
-    private Integer gender;
+    @Column(name = "patient_gender")
+    private String  gender;
 
     @Column(name = "birth_date")
     private LocalDate birthdate;
@@ -36,6 +36,8 @@ public class PatientDomain {
     @Column(name = "second_allele")
     private String secondAllele;
 
+    @Transient
+    private String bloodGroup;
     public PatientDomain() {
     }
 
@@ -52,7 +54,7 @@ public class PatientDomain {
         return lastname;
     }
 
-    public Integer getGender() {
+    public String getGender() {
         return gender;
     }
 
@@ -62,6 +64,14 @@ public class PatientDomain {
 
     public String getBirthplace() {
         return birthplace;
+    }
+
+    public String getBloodGroup() {
+        return this.firstAllele + this.secondAllele;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
     }
 
     public void setId(Integer id) {
@@ -88,7 +98,7 @@ public class PatientDomain {
         this.lastname = lastname;
     }
 
-    public void setGender(Integer gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

@@ -2,24 +2,30 @@ package fr.bordeaux.isped.MonProjetExamJava.PatientDTO;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class PatientDTO {
 
     private String firstname;
     private String lastname;
-    private GenderEnum  gender;
+    private GenderEnum gender;
     private LocalDate birthdate;
     private String birthplace;
     private AlleleEnum firstAllele;
     private AlleleEnum secondAllele;
-    // Variable de stockage du groupe sanguin
-    private String bloodGroup;
+
+
 
 
     //Constructeur du DTO
 
     public PatientDTO() {
     }
+
+    //public static PatientDTO convertPatientToDto(Optional<PatientDomain> byId) {
+
+    //    return null;
+   // }
 
 
     //Getter et Setter
@@ -54,9 +60,7 @@ public class PatientDTO {
         return secondAllele;
     }
 
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
+
 
 
 
@@ -88,58 +92,17 @@ public class PatientDTO {
         this.secondAllele = secondAllele;
     }
 
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
-
-
-
-
-    //Methode pour convertir un PatientDomain en PatientDTO
-
-    public PatientDTO convertPatientToDto(PatientDomain patient) {
-
-        PatientDTO patientDTO = new PatientDTO();
-        patientDTO.setFirstname(patient.getFirstname());
-        patientDTO.setLastname(patient.getLastname().toUpperCase());
-        patientDTO.setBirthdate(patient.getBirthdate());
-        patientDTO.setBirthplace(patient.getBirthplace());
-        if (patient.getGender()== 1) {
-            patientDTO.setGender(GenderEnum.MALE);;
-        } else if (patient.getGender() == 2) {
-            patientDTO.setGender(GenderEnum.FEMALE);;
-        }
-
-        patientDTO.setFirstAllele(AlleleEnum.valueOf(patient.getFirstAllele()));
-        patientDTO.setSecondAllele(AlleleEnum.valueOf(patient.getSecondAllele()));
-
-        patientDTO.setBloodGroup(patient.getFirstAllele()+ patient.getSecondAllele());
-        return patientDTO;
-
-
-
-
-
-    }
-
-
 
 
     //Méthode pour convertir un PatientDTO en PatientDomain
-    public PatientDomain convertDTOtoPatient (PatientDTO patientDto) {
+    public static PatientDomain convertDTOtoPatient (PatientDTO patientDto) {
 
         PatientDomain patient = new PatientDomain();
         patient.setFirstname(patientDto.getFirstname());
         patient.setLastname(patientDto.getLastname());
         patient.setBirthdate(patientDto.getBirthdate());
         patient.setBirthplace(patientDto.getBirthplace());
-
-        if (patientDto.getGender()== GenderEnum.MALE) {
-            patient.setGender(1);
-        } else if (patientDto.getGender()== GenderEnum.FEMALE) {
-            patient.setGender(2);
-        }
-
+        patient.setGender(patientDto.getGender().name());
         patient.setFirstAllele(patientDto.getFirstAllele().name());
         patient.setSecondAllele(patientDto.getSecondAllele().name());
 
