@@ -2,6 +2,7 @@ package fr.bordeaux.isped.MonProjetExamJava.web;
 
 import fr.bordeaux.isped.MonProjetExamJava.CountByGender.ICountByGender;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
+import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.PatientToCreate;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,17 @@ public class PatientController {
         return   patientService.countByGender();
 
     }
+
+
+    @PostMapping("api/patient/create")
+    public void createPatient(PatientToCreate patientToCreate) {
+        patientService.createPatient(patientToCreate);
+
+    }
+
+
+
+
 
 
 

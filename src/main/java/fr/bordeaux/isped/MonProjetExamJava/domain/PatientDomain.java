@@ -1,20 +1,22 @@
 package fr.bordeaux.isped.MonProjetExamJava.domain;
 
 
-import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.AlleleEnum;
-import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.GenderEnum;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "patient", schema = "exam_inf201")
 public class PatientDomain {
     @Id
-    @GeneratedValue (strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+    @Column(name = "parents_ids")
+    private List<Integer> parentsIds = new ArrayList<>(2);
+
 
     @Column(name = "firstname")
     private String firstname;
@@ -23,7 +25,7 @@ public class PatientDomain {
     private String lastname;
 
     @Column(name = "patient_gender")
-    private String  gender;
+    private String gender;
 
     @Column(name = "birth_date")
     private LocalDate birthdate;
@@ -38,6 +40,7 @@ public class PatientDomain {
 
     @Transient
     private String bloodGroup;
+
     public PatientDomain() {
     }
 
@@ -46,24 +49,56 @@ public class PatientDomain {
 
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getFirstname() {
         return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public List<Integer> getParentsIds() {
+        return parentsIds;
+    }
+
+    public void setParentsIds(List<Integer> parentsIds) {
+        this.parentsIds = parentsIds;
+    }
+
     public String getGender() {
         return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public LocalDate getBirthdate() {
         return birthdate;
     }
 
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public String getBirthplace() {
         return birthplace;
+    }
+
+    public void setBirthplace(String birthplace) {
+        this.birthplace = birthplace;
     }
 
     public String getBloodGroup() {
@@ -74,47 +109,21 @@ public class PatientDomain {
         this.bloodGroup = bloodGroup;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setBirthplace(String birthplace) {
-        this.birthplace = birthplace;
-    }
-
     public String getFirstAllele() {
         return firstAllele;
-    }
-
-    public String getSecondAllele() {
-        return secondAllele;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
     }
 
     public void setFirstAllele(String firstAllele) {
         this.firstAllele = firstAllele;
     }
 
+    public String getSecondAllele() {
+        return secondAllele;
+    }
+
     public void setSecondAllele(String secondAllele) {
         this.secondAllele = secondAllele;
     }
-
-
 
 
 }
