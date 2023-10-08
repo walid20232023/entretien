@@ -23,7 +23,7 @@ public class PatientService {
     PatientRepository patientRepository;
 
     public void addPatient(PatientDTO patientDto) {
-        patientRepository.save(PatientDTO.convertDTOtoPatient(patientDto));
+        patientRepository.save(patientDto.convertDTOtoPatient());
     }
 
 
@@ -46,35 +46,26 @@ public class PatientService {
 
     public void createPatient(PatientToCreate patientToCreate){
 
-        PatientDomain createdPatient = new PatientDomain();
 
-        //Affectation des ids des parents dans la liste de l'enfant
-        createdPatient.setParentsIds(patientToCreate.getParentsIds());
+        Integer idParent1 = patientToCreate.getParentsIds().get(0);
+        Integer idParent2 = patientToCreate.getParentsIds().get(1);
 
-        //Extraction des ids des parents
-        Integer idParent1= createdPatient.getParentsIds().get(0);
-        Integer idParent2= createdPatient.getParentsIds().get(1);
         //On recupère les deux allèles du premier parent
         String firstAlleleParent1 = patientRepository.findById(idParent1).orElseThrow().getFirstAllele();
         String secondAlleleParent1 = patientRepository.findById(idParent1).orElseThrow().getSecondAllele();
-        //On choisit au hasard un allèle à affecter comme premier allèle de l'enfant
-        createdPatient.setFirstAllele(RandomStringChooser.chooseRandomString(firstAlleleParent1, secondAlleleParent1));
 
-        //Et on fait de même pour le second parent, pour obtenir le deuxième allèle de l'enfant
 
         String firstAlleleParent2 = patientRepository.findById(idParent2).orElseThrow().getFirstAllele();
         String secondAlleleParent2 = patientRepository.findById(idParent2).orElseThrow().getSecondAllele();
-        createdPatient.setSecondAllele(RandomStringChooser.chooseRandomString(firstAlleleParent2, secondAlleleParent2));
 
-        //On affecte les autres propriétés
 
-        createdPatient.setFirstname(patientToCreate.getFirstname());
-        createdPatient.setLastname(patientToCreate.getLastname());
-        createdPatient.setBirthdate(patientToCreate.getBirthdate());
-        createdPatient.setBirthplace(patientToCreate.getBirthplace());
-        createdPatient.setGender(patientToCreate.getGender().name());
+
         //On enregistre le patient dans la base
-        patientRepository.save(createdPatient);
+        patientRepository.save(patientToCreate.convertCreateDtoToPatient(patientToCreate.getParentsIds(),
+                                                                          firstAlleleParent1,
+                                                                          secondAlleleParent1,
+                                                                          firstAlleleParent2,
+                                                                          secondAlleleParent2));
 
 
 

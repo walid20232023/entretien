@@ -3,6 +3,7 @@ package fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.AlleleEnum;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.GenderEnum;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
+import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -76,4 +77,49 @@ public class PatientToCreate  {
     public void setBirthplace(String birthplace) {
         this.birthplace = birthplace;
     }
+
+
+    public PatientDomain convertCreateDtoToPatient (List<Integer> parentIds,
+                                                    String allele1Parent1,
+                                                    String allele2Parent1,
+                                                    String allele1Parent2,
+                                                    String allele2Parent2) {
+
+        PatientDomain patient = new PatientDomain();
+
+        patient.setParentsIds(parentIds);
+        patient.setFirstname(this.getFirstname());
+        patient.setLastname(this.getLastname());
+        patient.setBirthdate(this.getBirthdate());
+        patient.setBirthplace(this.getBirthplace());
+        patient.setGender(this.getGender().name());
+
+        patient.setFirstAllele(RandomStringChooser.chooseRandomString(allele1Parent1, allele2Parent1 ));
+        patient.setSecondAllele(RandomStringChooser.chooseRandomString(allele1Parent2,allele2Parent2));
+
+
+        return patient;
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
