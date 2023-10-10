@@ -2,14 +2,12 @@ package fr.bordeaux.isped.MonProjetExamJava.web;
 
 import fr.bordeaux.isped.MonProjetExamJava.CountByGender.ICountByGender;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
-import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.PatientToCreate;
+import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.PatientToCreateDTO;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,8 +49,8 @@ public class PatientController {
 
 
     @PostMapping("api/patient/create")
-    public void createPatient(PatientToCreate patientToCreate) {
-        patientService.createPatient(patientToCreate);
+    public void createPatient(PatientToCreateDTO patientToCreateDTO) {
+        patientService.createPatient(patientToCreateDTO);
 
     }
 

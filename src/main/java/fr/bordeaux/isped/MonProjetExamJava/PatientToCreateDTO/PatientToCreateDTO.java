@@ -1,15 +1,13 @@
 package fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO;
 
-import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.AlleleEnum;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.GenderEnum;
-import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientToCreate  {
+public class PatientToCreateDTO {
 
     private List<Integer> parentsIds = new ArrayList<>(2);
     private String firstname;
@@ -20,10 +18,10 @@ public class PatientToCreate  {
 
 
 
-    //Constructeur
+    //Constructor
 
 
-    public PatientToCreate() {
+    public PatientToCreateDTO() {
     }
 
 
