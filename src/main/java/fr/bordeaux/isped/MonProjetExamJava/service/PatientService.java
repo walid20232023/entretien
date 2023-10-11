@@ -3,9 +3,12 @@ package fr.bordeaux.isped.MonProjetExamJava.service;
 import fr.bordeaux.isped.MonProjetExamJava.CountByGender.ICountByGender;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
 import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.PatientToCreateDTO;
+import fr.bordeaux.isped.MonProjetExamJava.PersonalizedException.PersonalizedException;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +21,15 @@ public class PatientService {
     @Autowired
     PatientRepository patientRepository;
 
-    public void addPatient(PatientDTO patientDto) {
-        patientRepository.save(patientDto.convertDTOtoPatient());
+    public PatientDomain addPatient(PatientDTO patientDto) {
+
+        PatientDomain patientDomain = patientDto.convertDTOtoPatient();
+
+        patientRepository.save(patientDomain);
+
+        return patientDomain;
+
+
     }
 
 

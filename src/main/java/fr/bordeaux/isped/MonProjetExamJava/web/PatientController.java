@@ -6,6 +6,9 @@ import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.PatientToCreateDTO
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,15 +24,20 @@ public class PatientController {
     PatientService patientService;
 
     @PostMapping("api/patient")
-    public void addPatient(@RequestBody PatientDTO patientDto) {
-        patientService.addPatient(patientDto);
+    public PatientDomain addPatient(@RequestBody PatientDTO patientDto) {
+       return patientService.addPatient(patientDto);
+
 
     }
 
 
     @GetMapping("api/patient/{id}")
-    public Optional<PatientDomain> findById(@PathVariable(name = "id") Integer id) {
-        return patientService.findPatientById(id);
+    public ResponseEntity<PatientDomain> findById(@PathVariable(name = "id") Integer id) {
+        Optional<PatientDomain> patient = patientService.findPatientById(id);
+        if(patient.isEmpty()){
+            return new ResponseEntity<PatientDomain>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<PatientDomain>(patient.get(), HttpStatus.OK);
     }
 
     @GetMapping("api/patient/all")

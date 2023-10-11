@@ -1,4 +1,5 @@
 package fr.bordeaux.isped.MonProjetExamJava.PatientDTO;
+import fr.bordeaux.isped.MonProjetExamJava.PersonalizedException.PersonalizedException;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 
 import java.time.LocalDate;
@@ -98,6 +99,9 @@ public class PatientDTO {
     public PatientDomain convertDTOtoPatient () {
 
         PatientDomain patient = new PatientDomain();
+
+
+
         patient.setFirstname(this.getFirstname());
         patient.setLastname(this.getLastname());
         patient.setBirthdate(this.getBirthdate());
@@ -106,7 +110,11 @@ public class PatientDTO {
         patient.setFirstAllele(this.getFirstAllele().name());
         patient.setSecondAllele(this.getSecondAllele().name());
 
+
          return patient;
+
+
+
 
 
 
