@@ -15,8 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
-
+//@RequestMapping
 
 public class PatientController {
 
@@ -26,8 +25,6 @@ public class PatientController {
     @PostMapping("api/patient")
     public PatientDomain addPatient(@RequestBody PatientDTO patientDto) {
        return patientService.addPatient(patientDto);
-
-
     }
 
 

@@ -14,9 +14,11 @@ public class PatientDomain {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "parents_ids")
-    private List<Integer> parentsIds = new ArrayList<>(2);
+    @Column(name = "parent1_id")
+    private Integer parent1Id;
 
+    @Column(name = "parent2_id")
+    private Integer parent2Id;
 
     @Column(name = "firstname")
     private String firstname;
@@ -69,13 +71,9 @@ public class PatientDomain {
         this.lastname = lastname;
     }
 
-    public List<Integer> getParentsIds() {
-        return parentsIds;
-    }
 
-    public void setParentsIds(List<Integer> parentsIds) {
-        this.parentsIds = parentsIds;
-    }
+
+
 
     public String getGender() {
         return gender;
@@ -101,8 +99,19 @@ public class PatientDomain {
         this.birthplace = birthplace;
     }
 
-    public String getBloodGroup() {
-        return this.firstAllele + this.secondAllele;
+    public  String getBloodGroup() {
+        String allele1 = this.firstAllele;
+        String allele2 = this.secondAllele;
+
+        if (("A".equals(allele1) && "A".equals(allele2)) || ("A".equals(allele1) && "O".equals(allele2)) ) {
+            return "A";
+        } else if ("O".equals(allele1) && "O".equals(allele2)) {
+            return "O";
+        } else if ("A".equals(allele1) && "B".equals(allele2)) {
+            return "AB";
+        }
+
+        return  "B" ;
     }
 
     public void setBloodGroup(String bloodGroup) {
@@ -125,5 +134,19 @@ public class PatientDomain {
         this.secondAllele = secondAllele;
     }
 
+    public Integer getParent1Id() {
+        return parent1Id;
+    }
 
+    public Integer getParent2Id() {
+        return parent2Id;
+    }
+
+    public void setParent1Id(Integer parent1Id) {
+        this.parent1Id = parent1Id;
+    }
+
+    public void setParent2Id(Integer parent2Id) {
+        this.parent2Id = parent2Id;
+    }
 }

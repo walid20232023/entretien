@@ -9,7 +9,9 @@ import java.util.List;
 
 public class PatientToCreateDTO {
 
-    private List<Integer> parentsIds = new ArrayList<>(2);
+
+    private Integer parent1Id;
+    private Integer parent2Id;
     private String firstname;
     private String lastname;
     private GenderEnum gender;
@@ -28,9 +30,6 @@ public class PatientToCreateDTO {
     //Getters and setters
 
 
-    public List<Integer> getParentsIds() {
-        return parentsIds;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -52,8 +51,12 @@ public class PatientToCreateDTO {
         return birthplace;
     }
 
-    public void setParentsIds(List<Integer> parentsIds) {
-        this.parentsIds = parentsIds;
+    public Integer getParent1Id() {
+        return parent1Id;
+    }
+
+    public Integer getParent2Id() {
+        return parent2Id;
     }
 
     public void setFirstname(String firstname) {
@@ -76,25 +79,33 @@ public class PatientToCreateDTO {
         this.birthplace = birthplace;
     }
 
+    public void setParent1Id(Integer parent1Id) {
+        this.parent1Id = parent1Id;
+    }
 
-    public PatientDomain convertCreateDtoToPatient (List<Integer> parentIds,
+    public void setParent2Id(Integer parent2Id) {
+        this.parent2Id = parent2Id;
+    }
+
+    public PatientDomain convertCreateDtoToPatient (Integer parent1Id,
+                                                    Integer parent2Id,
                                                     String allele1Parent1,
                                                     String allele2Parent1,
                                                     String allele1Parent2,
                                                     String allele2Parent2) {
-
+       //On crée un patient vide
         PatientDomain patient = new PatientDomain();
-
-        patient.setParentsIds(parentIds);
+       //On affecte les Id
+        patient.setParent1Id(parent1Id);
+        patient.setParent2Id(parent2Id);
         patient.setFirstname(this.getFirstname());
         patient.setLastname(this.getLastname());
         patient.setBirthdate(this.getBirthdate());
         patient.setBirthplace(this.getBirthplace());
         patient.setGender(this.getGender().name());
-
+        //On affecte les allèles du groupe sanguin choisis de façon aléatoire
         patient.setFirstAllele(RandomStringChooser.chooseRandomString(allele1Parent1, allele2Parent1 ));
         patient.setSecondAllele(RandomStringChooser.chooseRandomString(allele1Parent2,allele2Parent2));
-
 
         return patient;
 

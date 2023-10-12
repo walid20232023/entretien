@@ -23,7 +23,7 @@ public class PatientService {
 
     public PatientDomain addPatient(PatientDTO patientDto) {
 
-        PatientDomain patientDomain = patientDto.convertDTOtoPatient();
+        PatientDomain patientDomain=  patientDto.convertDTOtoPatient( patientDto);
 
         patientRepository.save(patientDomain);
 
@@ -52,8 +52,8 @@ public class PatientService {
     public void createPatient(PatientToCreateDTO patientToCreateDTO){
 
 
-        Integer idParent1 = patientToCreateDTO.getParentsIds().get(0);
-        Integer idParent2 = patientToCreateDTO.getParentsIds().get(1);
+        Integer idParent1 = patientToCreateDTO.getParent1Id();
+        Integer idParent2 = patientToCreateDTO.getParent2Id();
 
         //On recupère les deux allèles du premier parent
         String firstAlleleParent1 = patientRepository.findById(idParent1).orElseThrow().getFirstAllele();
@@ -66,11 +66,12 @@ public class PatientService {
 
 
         //On enregistre le patient dans la base
-        patientRepository.save(patientToCreateDTO.convertCreateDtoToPatient(patientToCreateDTO.getParentsIds(),
-                                                                          firstAlleleParent1,
-                                                                          secondAlleleParent1,
-                                                                          firstAlleleParent2,
-                                                                          secondAlleleParent2));
+        patientRepository.save(patientToCreateDTO.convertCreateDtoToPatient(patientToCreateDTO.getParent1Id(),
+                                                                            patientToCreateDTO.getParent2Id(),
+                                                                            firstAlleleParent1,
+                                                                            secondAlleleParent1,
+                                                                            firstAlleleParent2,
+                                                                            secondAlleleParent2));
 
 
 

@@ -96,11 +96,9 @@ public class PatientDTO {
 
 
     //Méthode pour convertir un PatientDTO en PatientDomain
-    public PatientDomain convertDTOtoPatient () {
+   /* public PatientDomain convertDTOtoPatient () {
 
         PatientDomain patient = new PatientDomain();
-
-
 
         patient.setFirstname(this.getFirstname());
         patient.setLastname(this.getLastname());
@@ -110,8 +108,33 @@ public class PatientDTO {
         patient.setFirstAllele(this.getFirstAllele().name());
         patient.setSecondAllele(this.getSecondAllele().name());
 
-
          return patient;
+
+    }*/
+
+
+
+    public  PatientDomain convertDTOtoPatient (PatientDTO patientDTO) {
+
+        PatientDomain patient = new PatientDomain();
+
+        patient.setFirstname( patientDTO.getFirstname());
+        patient.setLastname(this.getLastname());
+        patient.setBirthdate(this.getBirthdate());
+        patient.setBirthplace(this.getBirthplace());
+        patient.setGender(this.getGender().name());
+        patient.setFirstAllele(this.getFirstAllele().name());
+        patient.setSecondAllele(this.getSecondAllele().name());
+
+       return patient;
+
+
+
+
+
+
+
+
 
 
 
@@ -119,7 +142,6 @@ public class PatientDTO {
 
 
     }
-
 
 
 
