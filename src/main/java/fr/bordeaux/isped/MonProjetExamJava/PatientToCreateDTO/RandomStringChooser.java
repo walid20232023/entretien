@@ -11,10 +11,4 @@ public class RandomStringChooser {
         return (randomIndex == 0) ? str1 : str2; // Si randomIndex est 0, retourne str1, sinon retourne str2
     }
 
-
-
-
-
-
-
 }

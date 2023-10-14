@@ -3,6 +3,7 @@ package fr.bordeaux.isped.MonProjetExamJava.service;
 import fr.bordeaux.isped.MonProjetExamJava.CountByGender.ICountByGender;
 import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
 import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.PatientToCreateDTO;
+import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.RandomStringChooser;
 import fr.bordeaux.isped.MonProjetExamJava.PersonalizedException.PersonalizedException;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.repository.PatientRepository;
@@ -22,59 +23,35 @@ public class PatientService {
     PatientRepository patientRepository;
 
     public PatientDomain addPatient(PatientDTO patientDto) {
-
-        PatientDomain patientDomain=  patientDto.convertDTOtoPatient( patientDto);
-
+        PatientDomain patientDomain= patientDto.convertDTOtoPatient();
         patientRepository.save(patientDomain);
-
         return patientDomain;
-
-
     }
-
-
     public Optional<PatientDomain> findPatientById(Integer id) {
-
         return patientRepository.findById(id);
-
     }
-
     public Iterable<PatientDomain> getAllPatients(org.springframework.data.domain.Pageable page) {
         return patientRepository.findAll();
     }
-
     public List<ICountByGender> countByGender() {
-
         return patientRepository.countByGender();
     }
+    public PatientDomain createPatient(PatientToCreateDTO patientToCreateDTO){
+        //On convertit le patientToCreateDTO en PatientDomain
+        PatientDomain createdPatient = patientToCreateDTO.convertCreateDtoToPatient();
 
+        //On recupère les deux allèles de chaque parent
+        String firstAlleleParent1 = patientRepository.findById(createdPatient.getParent1Id()).orElseThrow().getFirstAllele();
+        String secondAlleleParent1 = patientRepository.findById(createdPatient.getParent1Id()).orElseThrow().getSecondAllele();
 
-    public void createPatient(PatientToCreateDTO patientToCreateDTO){
+        String firstAlleleParent2 = patientRepository.findById(createdPatient.getParent2Id()).orElseThrow().getFirstAllele();
+        String secondAlleleParent2 = patientRepository.findById(createdPatient.getParent2Id()).orElseThrow().getSecondAllele();
 
+        //On code les allèles de l'enfant qu'on lui attribue ensuite
+        createdPatient.setFirstAllele(RandomStringChooser.chooseRandomString( firstAlleleParent1, secondAlleleParent1));
+        createdPatient.setSecondAllele(RandomStringChooser.chooseRandomString(firstAlleleParent2, secondAlleleParent2));
 
-        Integer idParent1 = patientToCreateDTO.getParent1Id();
-        Integer idParent2 = patientToCreateDTO.getParent2Id();
-
-        //On recupère les deux allèles du premier parent
-        String firstAlleleParent1 = patientRepository.findById(idParent1).orElseThrow().getFirstAllele();
-        String secondAlleleParent1 = patientRepository.findById(idParent1).orElseThrow().getSecondAllele();
-
-
-        String firstAlleleParent2 = patientRepository.findById(idParent2).orElseThrow().getFirstAllele();
-        String secondAlleleParent2 = patientRepository.findById(idParent2).orElseThrow().getSecondAllele();
-
-
-
-        //On enregistre le patient dans la base
-        patientRepository.save(patientToCreateDTO.convertCreateDtoToPatient(patientToCreateDTO.getParent1Id(),
-                                                                            patientToCreateDTO.getParent2Id(),
-                                                                            firstAlleleParent1,
-                                                                            secondAlleleParent1,
-                                                                            firstAlleleParent2,
-                                                                            secondAlleleParent2));
-
-
-
+        return patientRepository.save(createdPatient);
 
     }
 

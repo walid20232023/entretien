@@ -93,53 +93,20 @@ public class PatientDTO {
         this.secondAllele = secondAllele;
     }
 
+    public PatientDomain convertDTOtoPatient () {
 
 
-    //Méthode pour convertir un PatientDTO en PatientDomain
-   /* public PatientDomain convertDTOtoPatient () {
+        PatientDomain patientDomain = new PatientDomain();
 
-        PatientDomain patient = new PatientDomain();
+        patientDomain.setFirstname( this.getFirstname());
+        patientDomain.setLastname(this.getLastname());
+        patientDomain.setBirthdate(this.getBirthdate());
+        patientDomain.setBirthplace(this.getBirthplace());
+        patientDomain.setGender(this.getGender().name());
+        patientDomain.setFirstAllele(this.getFirstAllele().name());
+        patientDomain.setSecondAllele(this.getSecondAllele().name());
 
-        patient.setFirstname(this.getFirstname());
-        patient.setLastname(this.getLastname());
-        patient.setBirthdate(this.getBirthdate());
-        patient.setBirthplace(this.getBirthplace());
-        patient.setGender(this.getGender().name());
-        patient.setFirstAllele(this.getFirstAllele().name());
-        patient.setSecondAllele(this.getSecondAllele().name());
-
-         return patient;
-
-    }*/
-
-
-
-    public  PatientDomain convertDTOtoPatient (PatientDTO patientDTO) {
-
-        PatientDomain patient = new PatientDomain();
-
-        patient.setFirstname( patientDTO.getFirstname());
-        patient.setLastname(this.getLastname());
-        patient.setBirthdate(this.getBirthdate());
-        patient.setBirthplace(this.getBirthplace());
-        patient.setGender(this.getGender().name());
-        patient.setFirstAllele(this.getFirstAllele().name());
-        patient.setSecondAllele(this.getSecondAllele().name());
-
-       return patient;
-
-
-
-
-
-
-
-
-
-
-
-
-
+       return patientDomain;
 
     }
 

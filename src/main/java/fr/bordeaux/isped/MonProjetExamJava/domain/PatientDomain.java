@@ -103,11 +103,11 @@ public class PatientDomain {
         String allele1 = this.firstAllele;
         String allele2 = this.secondAllele;
 
-        if (("A".equals(allele1) && "A".equals(allele2)) || ("A".equals(allele1) && "O".equals(allele2)) ) {
+        if (("A".equals(allele1) & "A".equals(allele2)) || ("A".equals(allele1) & "O".equals(allele2)) ) {
             return "A";
-        } else if ("O".equals(allele1) && "O".equals(allele2)) {
+        } else if ("O".equals(allele1) & "O".equals(allele2)) {
             return "O";
-        } else if ("A".equals(allele1) && "B".equals(allele2)) {
+        } else if ("A".equals(allele1) & "B".equals(allele2)) {
             return "AB";
         }
 

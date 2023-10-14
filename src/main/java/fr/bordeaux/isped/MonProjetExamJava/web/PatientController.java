@@ -24,7 +24,14 @@ public class PatientController {
 
     @PostMapping("api/patient")
     public PatientDomain addPatient(@RequestBody PatientDTO patientDto) {
+
+
+
        return patientService.addPatient(patientDto);
+
+
+
+
     }
 
 
@@ -54,8 +61,8 @@ public class PatientController {
 
 
     @PostMapping("api/patient/create")
-    public void createPatient(PatientToCreateDTO patientToCreateDTO) {
-        patientService.createPatient(patientToCreateDTO);
+    public PatientDomain createPatient(PatientToCreateDTO patientToCreateDTO) {
+       return patientService.createPatient(patientToCreateDTO);
 
     }
 
