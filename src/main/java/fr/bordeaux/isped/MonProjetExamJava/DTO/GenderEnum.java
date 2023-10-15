@@ -1,4 +1,4 @@
-package fr.bordeaux.isped.MonProjetExamJava.PatientDTO;
+package fr.bordeaux.isped.MonProjetExamJava.DTO;
 
 public enum GenderEnum {
 

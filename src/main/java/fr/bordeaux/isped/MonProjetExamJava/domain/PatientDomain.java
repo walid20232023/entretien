@@ -4,8 +4,6 @@ package fr.bordeaux.isped.MonProjetExamJava.domain;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "patient", schema = "exam_inf201")

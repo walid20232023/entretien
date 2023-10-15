@@ -1,11 +1,8 @@
-package fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO;
+package fr.bordeaux.isped.MonProjetExamJava.DTO;
 
-import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.GenderEnum;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PatientToCreateDTO {
 
@@ -28,8 +25,6 @@ public class PatientToCreateDTO {
 
 
     //Getters and setters
-
-
 
     public String getFirstname() {
         return firstname;

@@ -1,9 +1,8 @@
-package fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO;
+package fr.bordeaux.isped.MonProjetExamJava.service;
 
 import java.util.Random;
 
 public class RandomStringChooser {
-
 
     public static String chooseRandomString(String str1, String str2) {
         Random random = new Random();

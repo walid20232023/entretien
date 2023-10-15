@@ -1,4 +1,4 @@
-package fr.bordeaux.isped.MonProjetExamJava.CountByGender;
+package fr.bordeaux.isped.MonProjetExamJava.repository;
 
 public interface ICountByGender {
 

@@ -1,9 +1,7 @@
-package fr.bordeaux.isped.MonProjetExamJava.PatientDTO;
-import fr.bordeaux.isped.MonProjetExamJava.PersonalizedException.PersonalizedException;
+package fr.bordeaux.isped.MonProjetExamJava.DTO;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 public class PatientDTO {
 
@@ -23,15 +21,8 @@ public class PatientDTO {
     public PatientDTO() {
     }
 
-    //public static PatientDTO convertPatientToDto(Optional<PatientDomain> byId) {
 
-    //    return null;
-   // }
-
-
-    //Getter et Setter
-
-
+    //Getters and  Setters
 
     public String getFirstname() {
         return firstname;

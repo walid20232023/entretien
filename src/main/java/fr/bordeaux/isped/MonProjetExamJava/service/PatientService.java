@@ -1,15 +1,11 @@
 package fr.bordeaux.isped.MonProjetExamJava.service;
 
-import fr.bordeaux.isped.MonProjetExamJava.CountByGender.ICountByGender;
-import fr.bordeaux.isped.MonProjetExamJava.PatientDTO.PatientDTO;
-import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.PatientToCreateDTO;
-import fr.bordeaux.isped.MonProjetExamJava.PatientToCreateDTO.RandomStringChooser;
-import fr.bordeaux.isped.MonProjetExamJava.PersonalizedException.PersonalizedException;
+import fr.bordeaux.isped.MonProjetExamJava.repository.ICountByGender;
+import fr.bordeaux.isped.MonProjetExamJava.DTO.PatientDTO;
+import fr.bordeaux.isped.MonProjetExamJava.DTO.PatientToCreateDTO;
 import fr.bordeaux.isped.MonProjetExamJava.domain.PatientDomain;
 import fr.bordeaux.isped.MonProjetExamJava.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,15 +23,19 @@ public class PatientService {
         patientRepository.save(patientDomain);
         return patientDomain;
     }
+
     public Optional<PatientDomain> findPatientById(Integer id) {
-        return patientRepository.findById(id);
+       return  patientRepository.findById(id);
     }
+
     public Iterable<PatientDomain> getAllPatients(org.springframework.data.domain.Pageable page) {
         return patientRepository.findAll();
     }
+
     public List<ICountByGender> countByGender() {
         return patientRepository.countByGender();
     }
+
     public PatientDomain createPatient(PatientToCreateDTO patientToCreateDTO){
         //On convertit le patientToCreateDTO en PatientDomain
         PatientDomain createdPatient = patientToCreateDTO.convertCreateDtoToPatient();
@@ -51,10 +51,16 @@ public class PatientService {
         createdPatient.setFirstAllele(RandomStringChooser.chooseRandomString( firstAlleleParent1, secondAlleleParent1));
         createdPatient.setSecondAllele(RandomStringChooser.chooseRandomString(firstAlleleParent2, secondAlleleParent2));
 
+
+
         return patientRepository.save(createdPatient);
 
     }
 
+
+
+
+    //Les méthodes de gestion des exceptions
 
 
 
