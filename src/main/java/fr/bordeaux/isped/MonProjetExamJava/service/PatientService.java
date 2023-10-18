@@ -20,8 +20,8 @@ public class PatientService {
 
     public PatientDomain addPatient(PatientDTO patientDto) {
         PatientDomain patientDomain= patientDto.convertDTOtoPatient();
-        patientRepository.save(patientDomain);
-        return patientDomain;
+        return  patientRepository.save(patientDomain);
+
     }
 
     public Optional<PatientDomain> findPatientById(Integer id) {
@@ -56,13 +56,6 @@ public class PatientService {
         return patientRepository.save(createdPatient);
 
     }
-
-
-
-
-    //Les méthodes de gestion des exceptions
-
-
 
 
 }
