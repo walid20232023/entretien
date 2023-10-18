@@ -101,15 +101,19 @@ public class PatientDomain {
         String allele1 = this.firstAllele;
         String allele2 = this.secondAllele;
 
-        if (("A".equals(allele1) & "A".equals(allele2)) || ("A".equals(allele1) & "O".equals(allele2)) ) {
-            return "A";
+        if (("A".equals(allele1) & "A".equals(allele2)) || ("A".equals(allele1) & "O".equals(allele2))
+                || ("O".equals(allele1) & "A".equals(allele2))) {
+            return " Group A";
         } else if ("O".equals(allele1) & "O".equals(allele2)) {
-            return "O";
-        } else if ("A".equals(allele1) & "B".equals(allele2)) {
-            return "AB";
+            return "Group O";
+        } else if ("A".equals(allele1) & "B".equals(allele2) || ("B".equals(allele1) & "A".equals(allele2))) {
+            return " Group AB";
+        } else if (("B".equals(allele1) & "B".equals(allele2)) || ("B".equals(allele1) & "O".equals(allele2))
+                || ("O".equals(allele1) & "B".equals(allele2))) {
+            return " Group B";
         }
 
-        return  "B" ;
+        return  "Unknown(check alleles)" ;
     }
 
     public void setBloodGroup(String bloodGroup) {

@@ -24,7 +24,7 @@ Ce projet est une application Spring Java destinée à la gestion des patients. 
 - **Paramètre d'entrée** : Un DTO contenant les caractéristiques du patient à créer à l'exception de l'ID qui est généré. Les paramètres à renter sont: 
   "firstname": le prénom du patient en chaine de caractères,
   "lastname": son nom de famille en chaine de caractères
-  "gender": son genre
+  "gender": son genre (MALE, FEMALE, OTHER)
   "birthdate": sa date de naissance sous le format indiqué
   "birthplace": le numéro de département de naissance en chaine de caractères
   "firstAllele": le premiere allèle pour le groupe sanguin (A ou B ou O)
@@ -63,7 +63,7 @@ Ce projet est une application Spring Java destinée à la gestion des patients. 
 
 Pour exécuter ce projet, vous devrez disposer d'un environnement Java et Spring correctement configuré. Assurez-vous également d'avoir une base de données PostgreSQL pour stocker les informations des patients.
 - Clonez ce référentiel sur votre machine.
-- Configurez les propriétés de base de données dans le fichier `application.properties`: nous vous avons mis un example dans appelé "application.properties.example.properties", copier puis coller son contenu dans votre fichier `application.properties`. Ensuite,  remplacez : *[Your_Datatbase] par le nom de voter base de données PostgreSQL;
+- Dans src/main/resources, configurez les propriétés de base de données dans le fichier `application.properties`: nous vous avons mis un example dans appelé "application.properties.example.properties", copier puis coller son contenu dans votre fichier `application.properties`. Ensuite,  remplacez : *[Your_Datatbase] par le nom de voter base de données PostgreSQL;
             *[Your_Username] par votre nom d'utilisateur pour cette base;
             *[Your_Password] par votre mot de passe.
 - Exécutez l'application en utilisant votre IDE préféré.
