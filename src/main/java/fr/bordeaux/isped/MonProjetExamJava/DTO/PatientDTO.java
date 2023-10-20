@@ -86,7 +86,6 @@ public class PatientDTO {
 
     public PatientDomain convertDTOtoPatient () {
 
-
         PatientDomain patientDomain = new PatientDomain();
 
         patientDomain.setFirstname( this.getFirstname());

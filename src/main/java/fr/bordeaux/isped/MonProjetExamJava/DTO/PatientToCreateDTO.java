@@ -96,10 +96,10 @@ public class PatientToCreateDTO {
         patientDomain.setGender(this.getGender().name());
 
         return patientDomain;
-
-
-
     }
+
+
+
 
 
 

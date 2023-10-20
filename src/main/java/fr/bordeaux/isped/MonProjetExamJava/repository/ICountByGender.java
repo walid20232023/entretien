@@ -1,12 +1,7 @@
 package fr.bordeaux.isped.MonProjetExamJava.repository;
 
 public interface ICountByGender {
-
-Integer getGenderCount();
-
+Long getGenderCount();
 String getGender();
-
-
-
 
 }

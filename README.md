@@ -1,6 +1,6 @@
 # Documentation de l'Application Spring Java - Gestion des Patients
 
-Ce projet est une application Spring Java conçue pour gérer les informations des patients. Elle propose un ensemble de fonctionnalités pour créer, récupérer un ou tous, compter et créer de nouveaux patients. Cette documentation vous guidera à travers chaque aspect de l'API.
+Ce projet est une application Spring Java conçue pour gérer les informations des patients. Elle propose un ensemble de fonctionnalités pour créer, récupérer un ou tous, compter et créer de nouveaux patients à partir de parents. Cette documentation vous guidera à travers chaque aspect de l'API.
 
 ## Table des matières
 
@@ -21,7 +21,7 @@ Ce projet est une application Spring Java destinée à la gestion des patients. 
 
 - **Chemin** : api/patient
 - **Méthode** : POST
-- **Paramètre d'entrée** : Un DTO contenant les caractéristiques du patient à créer à l'exception de l'ID qui est généré. Les paramètres à renter sont: 
+- **Paramètre d'entrée** : Un DTO contenant les caractéristiques du patient à créer à l'exception de l'ID qui est généré. Les paramètres à rentrer sont: 
   "firstname": le prénom du patient en chaine de caractères,
   "lastname": son nom de famille en chaine de caractères,
   "gender": son genre (MALE, FEMALE, OTHER)
@@ -65,7 +65,7 @@ Ce projet est une application Spring Java destinée à la gestion des patients. 
 -ensuite, exécutez dans l'éditeur SQL, les deux requêtes contenues dans le fichier "schema_table_creation.sql", disponibles à la racine de ce projet.
 
 ## 8. Exécution du projet
-Pour exécuter ce projet, vous devrez disposer d'un environnement Java et Spring correctement configuré. Assurez-vous également d'avoir une base de données PostgreSQL pour stocker les informations des patients.
+Pour exécuter ce projet, vous devrez disposer d'un environnement Java et Spring correctement configuré.
 - Clonez ce référentiel sur votre machine,
 -Ouvre-le dans votre IDE,
 - Dans src/main/resources, configurez les propriétés de base de données dans le fichier `application.properties`: nous vous avons mis un exemple appelé "application.properties.example.properties", copier puis coller son contenu dans votre fichier `application.properties`. Ensuite,  remplacez : 
@@ -75,9 +75,11 @@ Pour exécuter ce projet, vous devrez disposer d'un environnement Java et Spring
             *[Port]  par le port disponible sur lequel l'application va tourner.
             
 -Pour accéder à l'application sur votre localhost, ouvrez votre swagger en lançant dans la barre de recherche Internet le lien suivant:  http://localhost:[port]/swagger-ui/index.html#/
-Vous remplacerez [port] par le numéro de port sur lequel vous avez configuré l'application dans le fichier "application.properties".
+-Vous remplacerez [port] par le numéro de port sur lequel vous avez configuré l'application dans le fichier "application.properties".
+
+-N'hésitez pas à consulter la documentation de l'API pour obtenir des détails supplémentaires sur l'utilisation des différentes fonctionnalités.
+
 ## 9. Contributions
---Assurez-vous de consulter la documentation de l'API pour obtenir des détails supplémentaires sur l'utilisation des différentes fonctionnalités.
 
 Les contributions à ce projet sont les bienvenues. N'hésitez pas à ouvrir des problèmes ou à proposer des demandes d'extraction si vous trouvez des bogues ou souhaitez ajouter des fonctionnalités supplémentaires.
 

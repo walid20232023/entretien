@@ -21,9 +21,7 @@ public class PatientController {
 
     @PostMapping("api/patient")
     public PatientDomain addPatient(@RequestBody PatientDTO patientDto) {
-
-       return patientService.addPatient(patientDto);
-
+        return patientService.addPatient(patientDto);
     }
 
     @GetMapping("api/patient/{id}")
@@ -39,7 +37,6 @@ public class PatientController {
 
     @GetMapping("api/patient/count")
     public List<ICountByGender>  countByGender() {
-
         return   patientService.countByGender();
 
     }

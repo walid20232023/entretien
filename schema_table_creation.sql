@@ -5,7 +5,7 @@ CREATE SCHEMA exam_inf201;
 
 
 
--- Requête 2: Création creation de la table "patient"
+-- Requête 2: Création de la table "patient"
 
 CREATE TABLE exam_inf2011.patient (
 	id serial ,

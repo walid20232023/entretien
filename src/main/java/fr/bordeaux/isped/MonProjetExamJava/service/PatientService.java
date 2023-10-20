@@ -21,7 +21,6 @@ public class PatientService {
     public PatientDomain addPatient(PatientDTO patientDto) {
         PatientDomain patientDomain= patientDto.convertDTOtoPatient();
         return  patientRepository.save(patientDomain);
-
     }
 
     public Optional<PatientDomain> findPatientById(Integer id) {
@@ -50,8 +49,6 @@ public class PatientService {
         //On code les allèles de l'enfant qu'on lui attribue ensuite
         createdPatient.setFirstAllele(RandomStringChooser.chooseRandomString( firstAlleleParent1, secondAlleleParent1));
         createdPatient.setSecondAllele(RandomStringChooser.chooseRandomString(firstAlleleParent2, secondAlleleParent2));
-
-
 
         return patientRepository.save(createdPatient);
 

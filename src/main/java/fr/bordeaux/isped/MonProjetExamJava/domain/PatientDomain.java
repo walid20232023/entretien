@@ -70,9 +70,6 @@ public class PatientDomain {
     }
 
 
-
-
-
     public String getGender() {
         return gender;
     }
